@@ -1,33 +1,27 @@
-import React, { useState, useContext } from 'react';
+import React, {useState} from 'react';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPencilAlt, faSave, faTimesCircle } from "@fortawesome/free-solid-svg-icons";
 import { Button, DivOption, DivWrapper, TextArea, SpanButton } from './theme'
-import authContext from '../../Context';
 
-const Note = ({content, id, priority}) => {
-const {text, setText} = useContext(authContext) 
+const Note = ({id, priority, content}) => {
 
-const [state, setState] = useState({
-    select:'',
-    note:''
-})   
-const handleChange = (e) => {
-setText({
-    ...text,
-    [e.target.name]: e.target.value,
-})
-setState({
-    ...state,
-     note: e.target.value
- })   
-
-}
-
-const handleChangeSelect = (e) => {
-    setState({
-        select: e.target.value
+    const [state, setState] = useState({
+        select:'',
+        note:''
     })
-}
+    const handleChangeSelect = (e) =>{
+        setState({
+            select: e.target.value
+        })
+    }
+    const handleChangeArea = (e) => {
+        setState({
+            note: e.target.value
+        })
+    }
+    const handleClickSave = () => {
+        console.log('save')
+    }
 
     return(
     <DivWrapper>
@@ -40,17 +34,16 @@ const handleChangeSelect = (e) => {
             </select>
             <SpanButton>
                 <Button title="Edit"><FontAwesomeIcon icon={faPencilAlt} /></Button>
-                <Button title="Save"><FontAwesomeIcon icon={faSave} /></Button>
+                <Button onClick = {handleClickSave}title="Save"><FontAwesomeIcon icon={faSave} /></Button>
                 <Button title="Cancel"><FontAwesomeIcon icon={faTimesCircle} /></Button>
             </SpanButton>
         </DivOption>
         <TextArea 
             name={id} 
-            onChange={handleChange}
+            onChange={handleChangeArea}
             value={state.note || content} 
             placeholder="Add Note" 
-        />
-               
+        />         
     </DivWrapper>
     )
 }

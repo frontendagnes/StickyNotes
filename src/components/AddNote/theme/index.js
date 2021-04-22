@@ -5,7 +5,8 @@ background: transparent;
 border: transparent;
 font-size: 18px;
 cursor: pointer;
-margin-left: 15px;
+margin-left: 5px;
+padding: 5px;
 `
 export const DivOption = styled.div`
 display: flex;

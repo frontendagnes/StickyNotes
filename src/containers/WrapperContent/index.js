@@ -1,14 +1,14 @@
 import React, { useEffect, useState, useContext } from 'react';
 import AddNote from '../../components/AddNote';
-import { DivWrapper } from './theme';
+// import { DivWrapper } from './theme';
 import api from '../../firebase';
 import TopPanel from '../../components/TopPanel';
-import authContext from '../../Context';
+// import authContext from '../../Context';
 import Footer from '../../components/Footer'
 // import Note from '../../components/AddNote/Note'
 const WrapperContent = () => {
     const [notes, setNotes] = useState([])
-    const { text, setText } = useContext(authContext)
+    // const { text, setText } = useContext(authContext)
     useEffect(() => {
         let ref = api.ref("/notes");
         ref.on("value", (data) => {
@@ -35,15 +35,10 @@ const WrapperContent = () => {
             priority: 'Low',
         }
             api.ref("/notes")
-                .push(item)
-                .then(() => {
-                    setText('')
-                })
-                .catch((error) => console.log(error))
-   
+                .push(item)  
     }
     return(
-        <DivWrapper>
+        <>
             <TopPanel 
                 onClick={handleClickAdd}
             />    
@@ -51,7 +46,7 @@ const WrapperContent = () => {
                 notes={notes}
             />
             <Footer />
-        </DivWrapper>
+        </>
     )
 }
 

@@ -1,18 +1,19 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Note from './Note'
 import { Wrapper } from './theme'
 
 const AddNote = ({notes}) => {
+
     return(
         <Wrapper>
         {
         notes.map((note) => {
             return(
-                <Note 
-                id={note.id}
-                key={note.id} 
-                content={note.content}
+                <Note
+                key={note.id}
+                id={note.id} 
                 priority={note.priority}
+                content={note.content}
                 />
             )
         })}    
