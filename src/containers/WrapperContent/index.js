@@ -29,7 +29,7 @@ const WrapperContent = () => {
 
     const handleClickAdd = () => {
         const item = {
-            content: '',
+            content: ' ',
             datatime: Date.now(),
             isEdit: false,
             priority: 'Low',

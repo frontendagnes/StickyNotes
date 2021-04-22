@@ -1,32 +1,54 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPencilAlt, faSave, faTimesCircle } from "@fortawesome/free-solid-svg-icons";
 import { Button, DivOption, DivWrapper, TextArea, SpanButton } from './theme'
+import api from '../../firebase'
+const Note = ({id, priority, content, idNote}) => {
 
-const Note = ({id, priority, content}) => {
+    // const [notes, setNotes] = useState([])
+    //     useEffect(() => {
+    //     let ref = api.ref("/notes");
+    //     ref.on("value", (data) => {
+    //         let notes = data.val()
+    //         let newState = []
+    //         for(let note in notes){
+    //             newState.push({
+    //                 id: note,
+    //                 content: notes[note].content,
+    //                 datatime: notes[note].datatime,
+    //                 isEdit: notes[note].isEdit,
+    //                 priority: notes[note].priority,
+    //             })
+    //         }
+    //         setNotes(newState)
+    //     })
+    // }, [])
 
-    const [state, setState] = useState({
-        select:'',
-        note:''
-    })
+    const [select, setSelect] = useState('')
+    const [note, setNote] = useState('')
+
     const handleChangeSelect = (e) =>{
-        setState({
-            select: e.target.value
-        })
+        setSelect(e.target.value)
     }
     const handleChangeArea = (e) => {
-        setState({
-            note: e.target.value
-        })
+        setNote(e.target.value)
     }
-    const handleClickSave = () => {
+    const handleClickSave = (idNote) => {
         console.log('save')
+        let note = api.ref(`notes/${idNote}`)
+        console.log(note)
+        note.update({
+            content: note,
+            datatime: Date.now(),
+            priority: select,
+        })
+
     }
 
     return(
     <DivWrapper>
         <DivOption>
-            <select value={state.select} onChange={handleChangeSelect} name="priority">
+            <select value={select} onChange={handleChangeSelect} name="priority">
                 <option value="defalut" defaultChecked>{priority}</option>
                 <option value="low">Low</option>
                 <option value="medium">Medium</option>
@@ -34,14 +56,14 @@ const Note = ({id, priority, content}) => {
             </select>
             <SpanButton>
                 <Button title="Edit"><FontAwesomeIcon icon={faPencilAlt} /></Button>
-                <Button onClick = {handleClickSave}title="Save"><FontAwesomeIcon icon={faSave} /></Button>
+                <Button onClick = {() => handleClickSave(id)}title="Save"><FontAwesomeIcon icon={faSave} /></Button>
                 <Button title="Cancel"><FontAwesomeIcon icon={faTimesCircle} /></Button>
             </SpanButton>
         </DivOption>
         <TextArea 
             name={id} 
             onChange={handleChangeArea}
-            value={state.note || content} 
+            value={note || content} 
             placeholder="Add Note" 
         />         
     </DivWrapper>
