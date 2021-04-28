@@ -1,71 +1,61 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useContext} from 'react';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPencilAlt, faSave, faTimesCircle } from "@fortawesome/free-solid-svg-icons";
 import { Button, DivOption, DivWrapper, TextArea, SpanButton } from './theme'
-import api from '../../firebase'
-const Note = ({id, priority, content, idNote}) => {
+import api from '../../utility/firebase'
+import authContext from '../../utility/Context'
+const Note = ({id, priority, content, created}) => {
 
-    // const [notes, setNotes] = useState([])
-    //     useEffect(() => {
-    //     let ref = api.ref("/notes");
-    //     ref.on("value", (data) => {
-    //         let notes = data.val()
-    //         let newState = []
-    //         for(let note in notes){
-    //             newState.push({
-    //                 id: note,
-    //                 content: notes[note].content,
-    //                 datatime: notes[note].datatime,
-    //                 isEdit: notes[note].isEdit,
-    //                 priority: notes[note].priority,
-    //             })
-    //         }
-    //         setNotes(newState)
-    //     })
-    // }, [])
-
-    const [select, setSelect] = useState('')
-    const [note, setNote] = useState('')
-
-    const handleChangeSelect = (e) =>{
-        setSelect(e.target.value)
+const { colorLow, colorMedium, colorImportant } = useContext(authContext)
+const [select, setSelect] = useState(priority)
+const [note, setNote] = useState(content)
+const [edit, setEdit] = useState(false)
+    
+const handleChangeSelect = (e) =>{
+    setSelect(e.target.value)
     }
-    const handleChangeArea = (e) => {
-        setNote(e.target.value)
+const handleChangeArea = (e) => {
+    setNote(e.target.value)
     }
-    const handleClickSave = (idNote) => {
-        console.log('save')
-        let note = api.ref(`notes/${idNote}`)
-        console.log(note)
-        note.update({
+const handleClickSave = (idNote) => {
+    const noteEdit = api.ref(`notes/${idNote}`)
+        noteEdit.update({
             content: note,
-            datatime: Date.now(),
+            isEdit: new Date().toLocaleString(),
             priority: select,
+            created: created,
         })
 
     }
-
+const handleClickCancel = (idNote) => {
+    const noteEdit = api.ref(`notes/${idNote}`)
+        noteEdit.remove()
+    }
+const handleClickEdit = () => {
+    setEdit(!edit)
+    }
     return(
     <DivWrapper>
-        <DivOption>
-            <select value={select} onChange={handleChangeSelect} name="priority">
-                <option value="defalut" defaultChecked>{priority}</option>
-                <option value="low">Low</option>
-                <option value="medium">Medium</option>
-                <option value="important">Important</option>
+        <DivOption style={select === "low" ? {backgroundColor:colorLow} : select === "medium" ? {backgroundColor:colorMedium} : select ==="important"? {backgroundColor:colorImportant}: {backgroundColor: "#EEEEEE"}}>
+            <select  value={select} onChange={handleChangeSelect} name="priority">
+                <option value="defalut" defaultChecked>---</option>
+                <option value="low" >low</option>
+                <option value="medium">medium</option>
+                <option value="important">important</option>
             </select>
             <SpanButton>
-                <Button title="Edit"><FontAwesomeIcon icon={faPencilAlt} /></Button>
+                <Button onClick = {handleClickEdit}title="Edit"><FontAwesomeIcon icon={faPencilAlt} /></Button>
                 <Button onClick = {() => handleClickSave(id)}title="Save"><FontAwesomeIcon icon={faSave} /></Button>
-                <Button title="Cancel"><FontAwesomeIcon icon={faTimesCircle} /></Button>
+                <Button onClick = {() => handleClickCancel(id)}title="Cancel"><FontAwesomeIcon icon={faTimesCircle} /></Button>
             </SpanButton>
-        </DivOption>
-        <TextArea 
-            name={id} 
-            onChange={handleChangeArea}
-            value={note || content} 
-            placeholder="Add Note" 
-        />         
+         </DivOption>
+            <TextArea 
+                name={id} 
+                onChange={handleChangeArea}
+                value={note || content} 
+                placeholder="Add Note"
+                disabled={edit ? false : true }
+              />   
     </DivWrapper>
     )
 }

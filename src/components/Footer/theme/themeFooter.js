@@ -8,11 +8,11 @@ export const Foot = styled.footer`
    padding: 10px 40px;
    font-weight: 600;
    border-top: 1px solid grey;
-   margin-bottom: 30px;
-
    width: 100%;
+   position: absolute;
    bottom:0;
-
+   height: 60px;
+   background-color: #ffffff;
    @media (max-width: 700px){
       flex-flow: column wrap;
       align-items: left;

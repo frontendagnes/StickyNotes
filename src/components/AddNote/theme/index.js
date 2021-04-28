@@ -19,6 +19,7 @@ padding: 5px;
 export const DivWrapper = styled.div`
 width: 30%;
 padding: 10px;
+
 `
 export const TextArea = styled.textarea`
 width: 100%;
@@ -30,11 +31,12 @@ padding: 5px 10px;
 export const SpanButton = styled.span`
 
 `
-
 // komponent główny index.js
 export const Wrapper = styled.div`
 display: flex;
 flex-flow: row wrap;
-height: 80vh;
 justify-content: center;
+width: 100%;
+margin-bottom: 70px;
+height: 100%;
 `

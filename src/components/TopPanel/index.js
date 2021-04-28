@@ -1,20 +1,20 @@
 import React from 'react'
 import Logo from '../Logo'
-import { DivWrapper, Button, ButtonSettings } from './theme'
+import { Header, ButtonSettings, ButtonAdd } from './theme'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faCogs } from "@fortawesome/free-solid-svg-icons"
 
-const TopPanel = ({onClick}) => {
+const TopPanel = ({onClick, settings}) => {
 return(
-<DivWrapper>
+<Header>
     <span>
         <Logo fontSize={36} />
     </span>
     <span>
-        <Button onClick={onClick}>Add note</Button>
-        <ButtonSettings onClick={onClick} title="Settings"><FontAwesomeIcon icon={faCogs} /></ButtonSettings>
+        <ButtonAdd onClick={onClick}>Add note</ButtonAdd>
+        <ButtonSettings onClick={settings} title="Settings"><FontAwesomeIcon icon={faCogs} /></ButtonSettings>
     </span>
-</DivWrapper>
+</Header>
 )
 }
 

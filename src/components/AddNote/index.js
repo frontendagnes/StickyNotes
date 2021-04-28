@@ -14,6 +14,7 @@ const AddNote = ({notes}) => {
                 id={note.id} 
                 priority={note.priority}
                 content={note.content}
+                created={note.created}
                 />
             )
         })}    
