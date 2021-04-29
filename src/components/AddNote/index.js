@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import Note from './Note'
 import { Wrapper } from './theme'
 
@@ -15,6 +15,7 @@ const AddNote = ({notes}) => {
                 priority={note.priority}
                 content={note.content}
                 created={note.created}
+                isEdit={note.isEdit}
                 />
             )
         })}    

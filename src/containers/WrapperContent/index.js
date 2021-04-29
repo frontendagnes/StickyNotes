@@ -12,11 +12,12 @@ const WrapperContent = () => {
 const [notes, setNotes] = useState([])
 const [color, setColor] = useState(localStorage.getItem("background"))
 const [colorLow, setColorLow] = useState(localStorage.getItem("colorLow"))
-const [colorMedium, setColorMedium] = useState("#FF9966")
-const [colorImportant, setColorImportant] = useState("#FF0000")
+const [colorMedium, setColorMedium] = useState(localStorage.getItem("colorMedium"))
+const [colorImportant, setColorImportant] = useState(localStorage.getItem("colorImportant"))
 const [settings, setSettings] = useState(false)
 
     useEffect(() => {
+
         let ref = api.ref("/notes");
         ref.on("value", (data) => {
             let notes = data.val()
@@ -31,13 +32,25 @@ const [settings, setSettings] = useState(false)
                 })
             }
             setNotes(newState)
-        })
+        }) 
+        if (localStorage.getItem("background")){
+            setColor(color)
+        }else{setColor("#ffffff")}
 
         if (localStorage.getItem("colorLow")){
             setColorLow(colorLow)
-        }else{setColorLow("green")}
-        
-    }, [])
+        }else{setColorLow("#33FF66")}
+
+        if (localStorage.getItem("colorMedium")){
+            setColorMedium(colorMedium)
+        }else{setColorMedium("#FF9966")}
+
+        if (localStorage.getItem("colorImportant")){
+            setColorImportant(colorImportant)
+        }else{setColorImportant("#FF0000")}
+
+    
+    }, [color, colorLow, colorMedium, colorImportant])
     const handleClickSettings = () => {
         setSettings(!settings)
     }    
