@@ -1,11 +1,11 @@
 # StickyNotes
 
-Mój pierwszy samodzielny projekt wykonany w `React`
+Aplikacja symuluje popularne "żółte karteczki", można za jej pomocą dodać nową notatką a nawet zmienić jej priorytet co widać zmianą koloru górnej belki. W aplikacji można zmienić kolor tła oraz kolory przypisane do poszczególnych priorytetów. Notatki zapisywane są w bazie danych natomiast kolory zapamiętywane są w LocalStorage. Aplikacja przystosowana do urządzeń mobilnych.
 
 ## Documentation
-Projekt został stworzone przez [create-react-app](https://github.com/facebook/create-react-app), w aplikacji zostały uzyte następujące rozwiązania:
+Projekt został stworzone przez [create-react-app](https://github.com/facebook/create-react-app), w aplikacji zostały użyte następujące rozwiązania:
 
-* [firebase](https://www.npmjs.com/package/firebase) - baza danych (proszę i podłączenie własnej bazy danych)
+* [firebase](https://www.npmjs.com/package/firebase) - baza danych (proszę o podłączenie własnej bazy danych)
 * [styled-components](https://github.com/styled-components/styled-components) - stylowanie projektu
 * [fontawesome](https://github.com/FortAwesome/Font-Awesome) - grafiki w aplikacji
 
@@ -41,8 +41,6 @@ Wszystkie pozostałe niezbędne informację znajdują się tutaj: [create-react-
 
 ## Author
 Agnieszka Kamińska (agnieszka.kaminska@ksiegarnia.edu.pl)
-
-### Other
 
 
 
