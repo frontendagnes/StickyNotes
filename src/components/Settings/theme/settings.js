@@ -28,8 +28,3 @@ margin-bottom: 30px;
 export const Input = styled.input`
 cursor: pointer;
 `
-export const DivTEMP = styled.div`
-width: 100%;
-height: 100px;
-background-color: yellow;
-`
