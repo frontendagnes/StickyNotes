@@ -35,9 +35,9 @@ Wszystkie pozostałe niezbędne informację znajdują się tutaj: [create-react-
 
 
 ## Contribute
-* Source Code: 
-* Issue Tracker: 
-* View: 
+* Source Code: https://github.com/zabula81/StickyNotes
+* Issue Tracker: https://github.com/zabula81/StickyNotes/issues
+* View:
 
 ## Author
 Agnieszka Kamińska (agnieszka.kaminska@ksiegarnia.edu.pl)
