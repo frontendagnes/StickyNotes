@@ -80,11 +80,12 @@ const [settings, setSettings] = useState(false)
                     onClick={handleClickAdd}
                     settings={handleClickSettings}
                 />
-                <DivWrapper>    
+                <DivWrapper>  
+                      
                     <AddNote 
                         notes={notes}
                     />
-                    {settings && <Settings />}  
+                   {settings && <Settings />}   
                 </DivWrapper>
                 <Footer />
             </MyProvider>

@@ -23,6 +23,12 @@ padding: 10px;
 display: flex;
 flex-flow: column wrap;
 justify-content: center;
+@media(max-width: 850px){
+    width: 40%;
+}
+@media(max-width: 550px){
+    width: 80%;
+}
 `
 export const TextArea = styled.textarea`
 width: 100%;

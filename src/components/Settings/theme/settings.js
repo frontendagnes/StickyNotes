@@ -7,6 +7,9 @@ width: 30%;
 border: 2px solid black;
 position: relative;
 height: 100%;
+@media(max-width: 900px){
+width: 80%;
+}
 `
 export const LabelDiv = styled.div`
 display: flex;
