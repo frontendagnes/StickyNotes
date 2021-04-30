@@ -2,11 +2,11 @@ import React, { useEffect, useState } from 'react';
 import AddNote from '../../components/AddNote';
 import TopPanel from '../../components/TopPanel';
 import api from '../../utility/firebase'
-// import { defaultState } from '../../utility/defaultState';
 import { Provider as MyProvider} from '../../utility/Context';
 import Settings from '../../components/Settings';
 import { DivWrapper, Wrapper } from './theme/index'
 import Footer from '../../components/Footer'
+
 const WrapperContent = () => {
 
 const [notes, setNotes] = useState([])
@@ -80,8 +80,7 @@ const [settings, setSettings] = useState(false)
                     onClick={handleClickAdd}
                     settings={handleClickSettings}
                 />
-                <DivWrapper>  
-                      
+                <DivWrapper>                    
                     <AddNote 
                         notes={notes}
                     />

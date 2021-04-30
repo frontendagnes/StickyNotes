@@ -4,7 +4,6 @@ import { faEdit } from "@fortawesome/free-solid-svg-icons";
 
 const Logo = (props) => {
 const style = {
-    // position: 'absolute',
     fontSize: props.fontSize,
     marginTop: props.top + 'px',
     marginLeft: props.left + 'px',
