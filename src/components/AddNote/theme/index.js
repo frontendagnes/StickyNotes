@@ -65,7 +65,7 @@ letter-spacing: 1.5px;
 // komponent główny index.js
 export const Wrapper = styled.div`
 display: flex;
-flex-flow: row wrap;
+flex-flow: row-reverse wrap-reverse;
 justify-content: center;
 width: 100%;
 margin-bottom: 70px;

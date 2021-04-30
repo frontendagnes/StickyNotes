@@ -62,7 +62,7 @@ const [settings, setSettings] = useState(false)
             priority: "",
         }
             api.ref("/notes")
-                .push(item)  
+                .push(item)
     }
     return(
         <Wrapper style={{backgroundColor: color}}>
