@@ -9,6 +9,9 @@ background-color: #ffffff;
 -moz-box-shadow: 0px 3px 18px 10px rgba(0,0,0,0.75);
 box-shadow: 0px 3px 18px 10px rgba(0,0,0,0.75);
 margin-bottom: 50px;
+@media(max-width: 700px){
+padding: 15px 5px;
+}
 `
 
 export const Button = styled.button`

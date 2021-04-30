@@ -8,7 +8,7 @@ const TopPanel = ({onClick, settings}) => {
 return(
 <Header>
     <span>
-        <Logo fontSize={36} />
+        <Logo fontSize={32} />
     </span>
     <span>
         <ButtonAdd onClick={onClick}>Add note</ButtonAdd>
