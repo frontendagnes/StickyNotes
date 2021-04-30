@@ -70,4 +70,10 @@ justify-content: center;
 width: 100%;
 margin-bottom: 70px;
 height: 100%;
+@media(max-width: 700px){
+    margin-bottom: 120px;
+}
+@media(max-width: 395px){
+    margin-bottom: 150px;
+}
 `
