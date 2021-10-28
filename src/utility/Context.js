@@ -12,6 +12,8 @@ const authContext = createContext({
     setColorMedium: () => {},
     colorImportant: '',
     setColorImportant: () => {},
+    newNotes:false,
+    setNewNotes: () => {},
   });
   
   const { Provider, Consumer } = authContext;
