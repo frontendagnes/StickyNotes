@@ -1,9 +1,8 @@
-import React, {useContext} from 'react'
+import React from 'react'
 import Note from './Note'
 import { Wrapper } from './theme'
-import authContext from '../../utility/Context' 
+
 const AddNote = ({notes}) => {
-    const {newNotes, setNewNotes} = useContext(authContext)
     return(
         <Wrapper>
         {

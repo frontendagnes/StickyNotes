@@ -4,7 +4,7 @@ import { faPencilAlt, faSave, faTimesCircle } from "@fortawesome/free-solid-svg-
 import { Button, DivOption, DivWrapper, TextArea, DivDate, Select, Option } from './theme'
 import api from '../../utility/firebase'
 import authContext from '../../utility/Context'
-import firebase from 'firebase';
+import firebase from 'firebase'
 import moment from 'moment';
 
 const Note = ({id, priority, content, created, isEdit}) => {
@@ -51,6 +51,8 @@ const handleClickSave = () => {
         })
         .catch((error) => {console.log(error)})
     }
+
+    setNewNotes(false)
     }
 const handleClickCancel = (idNote) => {
     // const noteEdit = api.ref(`notes/${idNote}`)
